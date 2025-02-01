@@ -1,0 +1,91 @@
+<div class="marquee-container">
+  <div class="marquee">
+    <div class="marquee-content">
+      <script>
+        console.log({{section.settings.marquee_texts|json}});
+      </script>
+      {%- for i in (1..3) -%}
+        {%- assign texts = section.settings.marquee_texts | newline_to_br | split: '<br />' -%}
+        {%- for text in texts -%}
+          <span class="marquee-item">
+            {{ text }}
+            <span class="separator">•</span>
+          </span>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: {{ section.settings.background_color }};
+  }
+
+  .marquee {
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+  }
+
+  .marquee-item {
+    display: inline-block;
+    padding: 10px 0;
+    color: {{ section.settings.text_color }};
+  }
+
+  .separator {
+    margin: 0 40px;
+    color: {{ section.settings.separator_color }};
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(100%); }
+
+    to { transform: translateX(-100%); }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "marquee_texts",
+      "label": "Marquee Texts",
+      "info": "Enter each text on a new line",
+      "default": "First announcement\nSecond announcement\nThird announcement"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee"
+    }
+  ]
+}
+{% endschema %}

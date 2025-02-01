@@ -1,0 +1,116 @@
+{%- style -%}
+  .product-feature {
+    padding: 40px 0;
+    background: {{ section.settings.background_color }};
+    text-align: center;
+  }
+
+  .product-feature__title {
+    margin-bottom: 10px;
+  }
+
+  .product-feature__heading {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .product-feature__super-product {
+    font-size: 3.5rem;
+    line-height: 0.3;
+    font-weight: bold;
+    color: {{ section.settings.accent_color }};
+    text-shadow: 2px 2px {{ section.settings.heading_color }};
+  }
+
+  .product-feature__content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .product-feature__image {
+    width: 720px;
+    height: auto;
+    margin: 40px auto;
+  }
+
+  @media (max-width: 768px) {
+    .product-feature__image {
+      width: 100%;
+    }
+    .product-feature {
+      padding: 20px 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="product-feature">
+  <div class="page-width">
+    <div class="product-feature__title">
+      <div class="product-feature__heading">{{ section.settings.heading }}</div>
+      <div class="product-feature__super-product">{{ section.settings.subheading }}</div>
+    </div>
+
+    <div class="feature-points">
+      <img
+        src="{{ section.settings.product_image | img_url: 'master' }}"
+        alt="{{ section.settings.product_image.alt | escape }}"
+        class="product-feature__image"
+        loading="lazy"
+        width="{{ section.settings.product_image.width }}"
+        height="{{ section.settings.product_image.height }}"
+      >
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why is millet our"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "SUPER PRODUCT"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#E8A355"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Feature",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

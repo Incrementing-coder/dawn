@@ -126,6 +126,12 @@
             >
               {{ block.settings.heading }}
             </h2>
+            <h2
+              class="banner__heading inline-richtext h1"
+              {{ block.shopify_attributes }}
+            >
+              {{ shop.metaobjects.headings['headings-koqihya6'].heading_2 }}
+            </h2>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>

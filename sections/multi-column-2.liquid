@@ -1,0 +1,294 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="separator-container">
+      <div class="vertical-separator"></div>
+    </div>
+    {%- for block in section.blocks -%}
+      <div
+        class="multi-column-row{% assign mod = forloop.index | modulo: 2 %}{% if mod == 0 %} reverse{% endif %}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="multi-column-text">
+          <div class="mobile-header" data-index="{{forloop.index}}">
+            {% if block.settings.title != blank %}
+              <div class="multi-column-header-mobile">
+                <div class="multi-column-number">
+                  <span>{{ forloop.index }}</span>
+                </div>
+                <h2>{{ block.settings.title }}</h2>
+              </div>
+
+              <div class="multi-column-image mobile-only">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    srcset="
+                      {%- if block.settings.image.width >= 165 -%}{{ block.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | image_url: width: 535 }} 535w,{%- endif -%}
+                      {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+                    "
+                    src="{{ block.settings.image | image_url: width: 535 }}"
+                    sizes="(min-width: 990px) 535px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 30px)"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                {%- endif -%}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.text != blank %}
+            <div class="multi-column-description">{{ block.settings.text }}</div>
+          {% endif %}
+        </div>
+        <div class="multi-column-image desktop-only">
+          {%- if block.settings.image != blank -%}
+            <img
+              srcset="
+                {%- if block.settings.image.width >= 165 -%}{{ block.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+                {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | image_url: width: 535 }} 535w,{%- endif -%}
+                {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+              "
+              src="{{ block.settings.image | image_url: width: 535 }}"
+              sizes="(min-width: 990px) 535px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 30px)"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Multi Column 2",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Column Title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to tell a story.</p>",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multi Column 2",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .multi-column-row {
+    display: flex;
+    align-items: center;
+    gap: 20rem;
+    margin-bottom: 4rem;
+  }
+
+  .multi-column-row.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .multi-column-text,
+  .multi-column-image {
+    flex: 1;
+  }
+
+  .multi-column-number {
+    width: 2em;
+    background: #f4e4cc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: #ffbd59;
+    text-shadow: 2px 2px #411900;
+    margin-bottom: 1rem;
+  }
+
+  .multi-column-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .multi-column-row {
+      flex-direction: column;
+    }
+
+    .multi-column-row.reverse {
+      flex-direction: column;
+    }
+  }
+
+  .separator-container {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    pointer-events: none;
+  }
+
+  .vertical-separator {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 5%;
+    bottom: 5%;
+    width: 50px;
+    background: transparent;
+    /* border-right: 1px solid #e8c4a1; */
+    transform: translateX(-50%);
+  }
+
+  .vertical-separator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: -10px;
+    height: 100%;
+    background-image: url('https://cdn.shopify.com/s/files/1/0737/3789/6178/files/vertical_seperator.svg?v=1737636545');
+    background-repeat: repeat-y;
+  }
+
+  .page-width {
+    position: relative;
+  }
+
+  @media screen and (max-width: 749px) {
+    .separator-container {
+      display: none;
+    }
+  }
+
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mobile-only {
+      display: block;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-header {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .multi-column-header-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .mobile-header .multi-column-image {
+      flex: 0.5 0 auto;
+      width: 100px;
+    }
+
+    .mobile-header h2 {
+      flex: 1;
+      margin: 0;
+    }
+
+    .mobile-header [data-index='3'] {
+      flex-direction: row-reverse;
+    }
+    .mobile-header [data-index='4'] {
+      flex-direction: row-reverse;
+    }
+
+    .multi-column-number {
+      margin-bottom: 0;
+    }
+  }
+{% endstylesheet %}

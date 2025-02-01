@@ -8,7 +8,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "⭐ Free delivery on orders above $999 ⭐",
             "text_alignment": "center",
             "color_scheme": "scheme-1",
             "link": ""
@@ -25,6 +25,7 @@
         "color_scheme": "scheme-1",
         "logo_position": "middle-left",
         "menu": "main-menu",
+        "menu_position": "middle-right",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
