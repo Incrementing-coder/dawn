@@ -1,3 +1,13 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
 {%- unless product.has_only_default_variant -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
@@ -18,8 +28,8 @@
         endif
       -%}
       {%- if picker_type == 'swatch' -%}
-        <fieldset class="custom-swatch-variant">
-          <legend class="custom-form-label">
+        <fieldset class="js product-form__input product-form__input--swatch">
+          <legend class="form__label">
             {{ option.name }}:
             <span data-selected-value>
               {{- option.selected_value -}}
@@ -33,8 +43,8 @@
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
-        <fieldset class="custom-pill-variant">
-          <legend class="custom-form-label">{{ option.name }}</legend>
+        <fieldset class="js product-form__input product-form__input--pill">
+          <legend class="form__label">{{ option.name }}</legend>
           {% render 'product-variant-options',
             product: product,
             option: option,
@@ -43,22 +53,22 @@
           %}
         </fieldset>
       {%- else -%}
-        <div class="custom-dropdown-variant">
-          <label class="custom-form-label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+        <div class="product-form__input product-form__input--dropdown">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
             {{ option.name }}
           </label>
-          <div class="custom-select">
+          <div class="select">
             {%- if picker_type == 'swatch_dropdown' -%}
               <span
                 data-selected-value
-                class="custom-dropdown-swatch"
+                class="dropdown-swatch"
               >
                 {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
               </span>
             {%- endif -%}
             <select
               id="Option-{{ section.id }}-{{ forloop.index0 }}"
-              class="custom-select__select"
+              class="select__select"
               name="options[{{ option.name | escape }}]"
               form="{{ product_form_id }}"
             >
@@ -69,7 +79,7 @@
                 picker_type: picker_type
               %}
             </select>
-            <span class="custom-svg-wrapper">
+            <span class="svg-wrapper">
               {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </div>
@@ -82,128 +92,3 @@
     </script>
   </variant-selects>
 {%- endunless -%}
-
-<style>
-  /* Custom Swatch Variant */
-  .custom-swatch-variant {
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-
-  .custom-form-label {
-    font-weight: bold;
-    font-size: 16px;
-    color: #411900;
-    display: none;
-  }
-
-  .custom-swatch-variant span[data-selected-value] {
-    display: inline-block;
-    font-size: 14px;
-    color: #888;
-  }
-
-  /* Custom Pill Variant */
-  .custom-pill-variant {
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-
-  .custom-pill-variant .custom-form-label {
-    font-weight: bold;
-    font-size: 16px;
-    color: #411900;
-  }
-
-  /* Custom Dropdown Variant */
-  .custom-dropdown-variant {
-    margin-bottom: 20px;
-    width: max-content;
-  }
-
-  .custom-dropdown-variant .custom-form-label {
-    font-weight: bold;
-    font-size: 16px;
-    color: #411900;
-  }
-
-  .custom-dropdown-variant .custom-select {
-    position: relative;
-    width: 100%;
-  }
-
-  /* Select element styling */
-  .custom-dropdown-variant .custom-select__select {
-    width: 100%;
-    padding: 10px 10px 10px 0px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #411900;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    transition: border-color 0.3s ease;
-    margin-right: 20px;
-    border: none !important;
-    background-color: white;
-    cursor: pointer;
-  }
-
-  /* Dropdown Select Styling */
-.custom-dropdown-variant .custom-select__select {
-  width: 100%;
-  padding: 10px 10px 10px 0px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #411900;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  transition: border-color 0.3s ease;
-  margin-right: 20px;
-  border: none !important;
-  background-color: white;
-  cursor: pointer;
-}
-
-  .custom-dropdown-variant .custom-select__select option:hover {
-    background-color: #411900 !important;
-    color: #FFF8EF !important;
-}
-
-
-  /* Remove focus effects */
-  .custom-dropdown-variant .custom-select__select:focus,
-  .custom-dropdown-variant .custom-select__select:focus-visible {
-    box-shadow: none;
-    border: none !important;
-    outline: none !important;
-  }
-
-  .custom-dropdown-variant .custom-select__select::-ms-expand {
-    display: none;
-  }
-
-  .custom-dropdown-variant .custom-svg-wrapper {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
-  .custom-dropdown-variant .custom-dropdown-swatch {
-    display: inline-block;
-    padding: 5px;
-    border-radius: 50%;
-    background-color: #411900;
-  }
-
-  /* Caret/Arrow styling */
-  .custom-svg-wrapper svg {
-    transform: rotate(360deg);
-    fill: #411900;
-    width: 10px;
-    height: 10px;
-  }
-</style>
