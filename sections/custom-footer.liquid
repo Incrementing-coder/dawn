@@ -1,0 +1,424 @@
+{% comment %}
+  Fully Dynamic Shopify Footer - With Customizable Menu Blocks
+{% endcomment %}
+<footer class="site-footer" style="background-color: {{ section.settings.footer_bg_color }}; color: {{ section.settings.footer_text_color }};">
+  <div class="footer-container">
+  <div class="footer-brand-copyright">
+    <div class="footer-brand">
+      {% if section.settings.footer_logo %}
+        <img src="{{ section.settings.footer_logo | image_url }}" alt="Footer Logo" class="footer-logo">
+      {% else %}
+        <h2 style="color: {{ section.settings.footer_text_color }};">{{ section.settings.footer_logo_text }}</h2>
+      {% endif %}
+      
+      <div class="social-icons">
+        {% if section.settings.facebook_link != blank %}
+          {% if section.settings.facebook_icon %}
+            <a href="{{ section.settings.facebook_link }}" target="_blank" aria-label="Facebook">
+              <img src="{{ section.settings.facebook_icon | image_url }}" alt="Facebook Icon" class="social-icon" style="width: 20px; height: 20px;">
+            </a>
+          {% else %}
+            <a href="{{ section.settings.facebook_link }}" target="_blank" aria-label="Facebook">
+              <i class="fa-brands fa-facebook" style="color: {{ section.settings.social_icon_color }};"></i>
+            </a>
+          {% endif %}
+        {% endif %}
+        
+        {% if section.settings.instagram_link != blank %}
+          {% if section.settings.instagram_icon %}
+            <a href="{{ section.settings.instagram_link }}" target="_blank" aria-label="Instagram">
+              <img src="{{ section.settings.instagram_icon | image_url }}" alt="Instagram Icon" class="social-icon" style="width: 20px; height: 20px;">
+            </a>
+          {% else %}
+            <a href="{{ section.settings.instagram_link }}" target="_blank" aria-label="Instagram">
+              <i class="fa-brands fa-instagram" style="color: {{ section.settings.social_icon_color }};"></i>
+            </a>
+          {% endif %}
+        {% endif %}
+        
+        {% if section.settings.x_link != blank %}
+          {% if section.settings.x_icon %}
+            <a href="{{ section.settings.x_link }}" target="_blank" aria-label="X">
+              <img src="{{ section.settings.x_icon | image_url }}" alt="X Icon" class="social-icon" style="width: 20px; height: 20px;">
+            </a>
+          {% else %}
+            <a href="{{ section.settings.x_link }}" target="_blank" aria-label="X">
+              <i class="fa-brands fa-x-twitter" style="color: {{ section.settings.social_icon_color }};"></i>
+            </a>
+          {% endif %}
+        {% endif %}
+      </div>
+      </div>
+        <div class="footer-bottom">
+    <p class="copyright">© {{ "now" | date: "%Y" }}, {{ section.settings.footer_logo_text }}.</p>
+  </div>
+    </div>
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'menu' %}
+          <div class="footer-section" {{ block.shopify_attributes }}>
+            <h3 style="color: {{ section.settings.footer_text_color }};">{{ block.settings.menu_title }}</h3>
+            
+            {% assign menu = linklists[block.settings.menu_links] %}
+            
+            {% if menu.links.size > 0 %}
+              <ul>
+                {% for link in menu.links %}
+                  <li><a href="{{ link.url }}" style="color: {{ section.settings.footer_link_color }};">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>No links available</p>
+            {% endif %}
+          </div>
+        {% when 'text' %}
+          <div class="footer-section" {{ block.shopify_attributes }}>
+            <h3 style="color: {{ section.settings.footer_text_color }};">{{ block.settings.title }}</h3>
+            <div class="rte" style="color: {{ section.settings.footer_text_color }};">
+              {{ block.settings.text }}
+            </div>
+          </div>
+        {% when 'contact' %}
+          <div class="footer-section" {{ block.shopify_attributes }}>
+            <h3 style="color: {{ section.settings.footer_text_color }};">{{ block.settings.title }}</h3>
+            <ul>
+              {% if block.settings.company_name != blank %}
+                <li style="color: {{ section.settings.footer_text_color }};">{{ block.settings.company_name }}</li>
+              {% endif %}
+              {% if block.settings.address != blank %}
+                <li style="color: {{ section.settings.footer_text_color }};">{{ block.settings.address }}</li>
+              {% endif %}
+              {% if block.settings.email != blank %}
+                <li>Email: <a href="mailto:{{ block.settings.email }}" style="color: {{ section.settings.footer_link_color }};">{{ block.settings.email }}</a></li>
+              {% endif %}
+              {% if block.settings.phone != blank %}
+                <li>Call us: <a href="tel:{{ block.settings.phone }}" style="color: {{ section.settings.footer_link_color }};">{{ block.settings.phone }}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+         <div class="footer-bottom-mobile">
+    <p class="copyright">© {{ "now" | date: "%Y" }}, {{ section.settings.footer_logo_text }}.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 40px 20px;
+    text-align: left;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .footer-bottom-mobile{
+    display:none;
+  }
+  .footer-container {
+    width:100%;
+  }
+
+  .footer-brand {
+    margin-bottom: 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .footer-logo {
+    max-width: 120px;
+    margin-bottom: 10px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    width:100%;
+    justify-content:space-around;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  .footer-section {
+    margin-bottom: 30px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-section li {
+    margin: 10px 0;
+  }
+
+  .footer-section a {
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  .footer-section a:hover {
+    opacity: 1;
+  }
+
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  .footer-brand-copyright{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    height:-webkit-fill-available;
+  }
+
+  .copyright {
+    margin: 0;
+  }
+
+  @media (min-width: 769px) {
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      align-items: flex-start;
+      justify-content:center;
+    }
+
+    .footer-brand {
+      grid-column: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: 30px 20px;
+      align-items:flex-start;
+    }
+
+       .footer-bottom{
+        display: none;
+    }
+
+    .footer-bottom-mobile{
+        display:block;
+        margin-top:10px;
+    }
+
+    .footer-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction:column;
+    }
+
+    .footer-section {
+      margin-bottom: 25px;
+    }
+
+    .footer-section:last-child {
+      margin-bottom: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dynamic Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Branding Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "text",
+      "id": "footer_logo_text",
+      "label": "Footer Logo Text (if no image)",
+      "default": "NEULI"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "footer_bg_color",
+      "label": "Footer Background Color",
+      "default": "#4b2200"
+    },
+    {
+      "type": "color",
+      "id": "footer_text_color",
+      "label": "Footer Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "footer_link_color",
+      "label": "Footer Link Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Social Media Icon Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Social Media Links"
+    },
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "x_link",
+      "label": "X (Twitter) URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "facebook_icon",
+      "label": "Facebook Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "instagram_icon",
+      "label": "Instagram Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "x_icon",
+      "label": "X (Twitter) Icon"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu Title",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu_links",
+          "label": "Menu Links"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contact Information",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Contact Us"
+        },
+        {
+          "type": "text",
+          "id": "company_name",
+          "label": "Company Name",
+          "default": "NEULI Ventures LLP"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Address",
+          "default": "Kanubari, Longding, AP"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email",
+          "default": "neuliventures@gmail.com"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone",
+          "default": "+91 7085831194"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dynamic Footer",
+      "blocks": [
+        {
+          "type": "menu",
+          "settings": {
+            "menu_title": "Shop"
+          }
+        },
+        {
+          "type": "menu",
+          "settings": {
+            "menu_title": "Quick Links"
+          }
+        },
+        {
+          "type": "contact",
+          "settings": {
+            "title": "Contact Us"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
