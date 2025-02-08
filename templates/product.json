@@ -9,6 +9,27 @@
  */
 {
   "sections": {
+    "custom_breadcrumb_BBn7hh": {
+      "type": "custom-breadcrumb",
+      "settings": {
+        "show_breadcrumbs": true,
+        "bg_color": "#fff8e7",
+        "text_color": "#411900",
+        "link_color": "#8c7355",
+        "home_text": "Home",
+        "current_page_text": "Shop",
+        "show_separator": true,
+        "separator": "/",
+        "breadcrumb_font_size": 14,
+        "link_weight": "normal",
+        "heading_text": "Products",
+        "heading_color": "#ffbd59",
+        "heading_size": 32,
+        "heading_weight": "bold",
+        "shadow_opacity": 0.2,
+        "padding": 20
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -37,7 +58,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "quantity_selector": {
@@ -113,11 +135,22 @@
         "collapsible-row-3",
         "share"
       ],
+      "custom_css": [
+        ".quantity {padding: 10px; color: white;}",
+        ".quantity > button {color: white;}",
+        ".quantity__button .svg-wrapper {width: 1.5rem; pointer-events: none;}",
+        ".quantity::before {background-color: rgba(var(--color-foreground));}",
+        ".quantity__input {background-color: #6b4d3d; border-radius: 20px;}"
+      ],
       "settings": {
         "enable_sticky_info": true,
+        "color_scheme": "scheme-bd27a531-906f-4a30-a754-1e5655356b26",
         "media_size": "large",
         "constrain_to_viewport": true,
+        "media_fit": "contain",
         "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
@@ -154,7 +187,9 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
+        "section_color_scheme": "",
         "color_scheme": "scheme-2",
+        "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
@@ -208,9 +243,11 @@
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
@@ -221,6 +258,7 @@
     }
   },
   "order": [
+    "custom_breadcrumb_BBn7hh",
     "main",
     "image-with-text",
     "multicolumn",
