@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_breadcrumb_nCREd8": {
+      "type": "custom-breadcrumb",
+      "settings": {
+        "show_breadcrumbs": true,
+        "bg_color": "#fff8e7",
+        "text_color": "#411900",
+        "link_color": "#8c7355",
+        "home_text": "Home",
+        "current_page_text": "About",
+        "show_separator": true,
+        "separator": "/",
+        "breadcrumb_font_size": 14,
+        "link_weight": "normal",
+        "heading_text": "Who is NEULI?",
+        "heading_color": "#ffbd59",
+        "heading_size": 32,
+        "heading_weight": "bold",
+        "shadow_opacity": 0.2,
+        "padding": 20
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "h1 {display: none;}",
+        "img {border: none;}"
+      ],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "multi_column_2_NLpiLX": {
+      "type": "multi-column-2",
+      "blocks": {
+        "column_YnLxLa": {
+          "type": "column",
+          "settings": {
+            "title": "NEULI is more than a brand",
+            "text": "<p>We are a movement inspired by the people, traditions, and lands of Arunachal Pradesh. Founded by Nokngam Wangjen and Ratnadeep Baruah, NEULI was born from a shared vision: to empower farmers, preserve cultural heritage, and create sustainable opportunities through innovative farm-to-table solutions.</p>",
+            "image": "shopify://shop_images/case-study-6-scaled-1.png"
+          }
+        },
+        "column_gfXFc4": {
+          "type": "column",
+          "settings": {
+            "title": "Farm Aggregator",
+            "text": "<p>We work hand-in-hand with farmers, Beginning with millet—a super crop that symbolizes resilience, nutrition, and tradition. But NEULI’s mission extends beyond millet. We aim to redefine agriculture by transforming forgotten crops into modern essentials, connecting communities to the global market, and delivering products that honor both tradition and innovation</p>",
+            "image": "shopify://shop_images/rice-1549131_1280.png"
+          }
+        },
+        "column_h3bmPy": {
+          "type": "column",
+          "settings": {
+            "title": "Story Teller",
+            "text": "<p>Every product tells a story—of the soil it came from, the hands that nurtured it, and the legacy it carries forward. We are dedicated to building an ecosystem where farming, culture, and sustainability thrive together.</p>",
+            "image": "shopify://shop_images/Millets-Pintrest.png"
+          }
+        },
+        "column_EJKgJn": {
+          "type": "column",
+          "settings": {
+            "title": "NEULI is not just a company.",
+            "text": "<p>We are a bridge between the past and the future, between the farmers and your table</p>",
+            "image": "shopify://shop_images/images.png"
+          }
+        }
+      },
+      "block_order": [
+        "column_YnLxLa",
+        "column_gfXFc4",
+        "column_h3bmPy",
+        "column_EJKgJn"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_MRGqEB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gMgUMA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Experience the journey. Taste the authenticity. Choose NEULI.",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gMgUMA"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "custom_breadcrumb_nCREd8",
+    "main",
+    "multi_column_2_NLpiLX",
+    "rich_text_MRGqEB"
+  ]
+}

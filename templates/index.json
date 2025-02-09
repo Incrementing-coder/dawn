@@ -15,23 +15,23 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Naturally",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Procured directly from farmers to your table",
             "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Explore Products",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -43,12 +43,16 @@
         "text",
         "button"
       ],
+      "custom_css": [
+        ".banner__heading {font-family: \"Bowlby One\"; line-height: 33px;}"
+      ],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image": "shopify://shop_images/banner.jpg",
+        "image_overlay_opacity": 20,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
@@ -95,12 +99,51 @@
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "padding_top": 20,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "marquee_eUpX8Y": {
+      "type": "marquee",
+      "settings": {
+        "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
+        "background_color": "#411900",
+        "text_color": "#fff8e7",
+        "separator_color": "#febd5b",
+        "marquee_speed": 35
+      }
+    },
+    "product_feature_ibV3q7": {
+      "type": "product-feature",
+      "settings": {
+        "heading": "Why is millet our",
+        "subheading": "SUPER PRODUCT",
+        "product_image": "shopify://shop_images/Frame_22.png",
+        "background_color": "#f4e4cc",
+        "heading_color": "#333333",
+        "accent_color": "#E8A355"
+      }
+    },
+    "marquee_jp9GUJ": {
+      "type": "marquee",
+      "settings": {
+        "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
+        "background_color": "#411900",
+        "text_color": "#fff8e7",
+        "separator_color": "#febd5b",
+        "marquee_speed": 34
       }
     },
     "featured_collection": {
       "type": "featured-collection",
+      "custom_css": [
+        ".title {color: #ffbd59; text-shadow: 2.77px 2.77px 0px rgba(107, 77, 61, 1); font-size: 3rem; text-align: center; margin-bottom: 100px;}",
+        ".grid {justify-content: space-between;}",
+        ".card__heading {font-size: 20px;}",
+        ".price-item {font-size: 24px;}",
+        ".quick-add__submit {background-color: #febd5b; outline: none;}",
+        ".quick-add__submit::after {box-shadow: none;}"
+      ],
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
@@ -121,16 +164,53 @@
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "standard",
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 28,
         "padding_bottom": 36
+      }
+    },
+    "testimonials_DzdjpA": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_twiThe": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/nyainyo_testimonial_image.jpg",
+            "author_name": "Nyainyo Wangjen",
+            "author_title": "Advocate and Baker",
+            "rating": 5,
+            "testimonial": "\"Millet flour is a fantastic alternative to regular flour. My baked goods have never been healthier or more delicious!\""
+          }
+        },
+        "testimonial_WBmhme": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/gd_testimonial_image.jpg",
+            "author_name": "Shri. G.D Wangsu",
+            "author_title": "Hon’ble Minister of Arunachal Pradesh",
+            "rating": 5,
+            "testimonial": "\"I admire how NEULI Ventures supports local farmers while delivering amazing products. It feels great to be part of this journey as a customer and strategic partner.\""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_twiThe",
+        "testimonial_WBmhme"
+      ],
+      "settings": {
+        "title": "NEULi FANS",
+        "subtitle": "A revolution in healthy snacks"
       }
     }
   },
   "order": [
     "image_banner",
     "image_with_text_ibzN6d",
-    "featured_collection"
+    "marquee_eUpX8Y",
+    "product_feature_ibV3q7",
+    "marquee_jp9GUJ",
+    "featured_collection",
+    "testimonials_DzdjpA"
   ]
 }

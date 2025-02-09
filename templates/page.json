@@ -21,26 +21,40 @@
       "type": "custom-breadcrumb",
       "settings": {
         "show_breadcrumbs": true,
-        "bg_color": "#FFF8E7",
+        "bg_color": "#fff8e7",
         "text_color": "#411900",
-        "link_color": "#8C7355",
+        "link_color": "#8c7355",
         "home_text": "Home",
-        "current_page_text": "About",
-        "show_separator": true,
-        "separator": "/",
+        "current_page_text": "",
+        "show_separator": false,
+        "separator": "",
         "breadcrumb_font_size": 14,
         "link_weight": "normal",
-        "heading_text": "About",
-        "heading_color": "#FFBD59",
+        "heading_text": "Partner with us",
+        "heading_color": "#ffbd59",
         "heading_size": 32,
         "heading_weight": "bold",
         "shadow_opacity": 0.2,
         "padding": 20
       }
+    },
+    "page_4BxU3r": {
+      "type": "page",
+      "custom_css": [
+        "img {border: none;}"
+      ],
+      "settings": {
+        "page": "partner-with-us",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "custom_breadcrumb_nCREd8"
+    "custom_breadcrumb_nCREd8",
+    "page_4BxU3r"
   ]
 }

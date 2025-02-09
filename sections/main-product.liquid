@@ -1,32 +1,30 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".summary__title").forEach(function (accordion) {
-    accordion.addEventListener("click", function () {
-      let details = this.parentElement; // Get the <details> element
-      let content = details.querySelector(".accordion__content");
-      let toggleIcon = this.querySelector(".accordion-toggle");
+  document.querySelectorAll(".product__accordion details").forEach(function (details) {
+    let summary = details.querySelector(".summary__title");
+    let toggleIcon = summary.querySelector(".accordion-toggle");
 
-      // Close all accordions except the clicked one
-      document.querySelectorAll("details").forEach(function (item) {
+    summary.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default <summary> toggle behavior
+
+      let isOpen = details.hasAttribute("open");
+
+      // Close all other accordions
+      document.querySelectorAll(".product__accordion details").forEach(function (item) {
         if (item !== details) {
-          item.removeAttribute("open"); // Close all other details elements
+          item.removeAttribute("open");
           let icon = item.querySelector(".accordion-toggle");
-          if (icon) {
-            icon.textContent = "+";
-            icon.style.fontSize = "30px"; // Apply font-size
-          }
+          if (icon) icon.textContent = "+"; // Reset icon
         }
       });
 
-      // Toggle the clicked accordion
-      if (details.hasAttribute("open")) {
+      // Toggle current accordion
+      if (isOpen) {
         details.removeAttribute("open");
         toggleIcon.textContent = "+";
-        toggleIcon.style.fontSize = "30px";
       } else {
-        details.setAttribute("open", "true");
-        toggleIcon.textContent = "−"; // Show minus when expanded
-        toggleIcon.style.fontSize = "30px";
+        details.setAttribute("open", "");
+        toggleIcon.textContent = "−";
       }
     });
   });

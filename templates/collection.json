@@ -22,9 +22,9 @@
       "type": "custom-breadcrumb",
       "settings": {
         "show_breadcrumbs": true,
-        "bg_color": "#FFF8E7",
+        "bg_color": "#fff8e7",
         "text_color": "#411900",
-        "link_color": "#8C7355",
+        "link_color": "#8c7355",
         "home_text": "Home",
         "current_page_text": "Shop",
         "show_separator": true,
@@ -32,7 +32,7 @@
         "breadcrumb_font_size": 14,
         "link_weight": "normal",
         "heading_text": "Products",
-        "heading_color": "#FFBD59",
+        "heading_color": "#ffbd59",
         "heading_size": 32,
         "heading_weight": "bold",
         "shadow_opacity": 0.2,
@@ -41,6 +41,10 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__heading {font-size: 20px;}",
+        ".price-item {font-size: 24px;}"
+      ],
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
