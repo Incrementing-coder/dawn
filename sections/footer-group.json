@@ -11,6 +11,54 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "custom_footer_XQHHPY": {
+      "type": "custom-footer",
+      "blocks": {
+        "menu_BNUAMU": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "Shop",
+            "menu_links": "shop-menu"
+          }
+        },
+        "menu_Am7pVW": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "Quick Links",
+            "menu_links": "quick-links"
+          }
+        },
+        "contact_YYzJzK": {
+          "type": "contact",
+          "settings": {
+            "title": "Contact Us",
+            "company_name": "NEULI Ventures LLP",
+            "address": "Kanubari, Longding, AP",
+            "email": "neuliventures@gmail.com",
+            "phone": "+91 7085831194"
+          }
+        }
+      },
+      "block_order": [
+        "menu_BNUAMU",
+        "menu_Am7pVW",
+        "contact_YYzJzK"
+      ],
+      "settings": {
+        "footer_logo": "shopify://shop_images/Neuli-Logo-White.png",
+        "footer_logo_text": "NEULI",
+        "footer_bg_color": "#411900",
+        "footer_text_color": "#ffffff",
+        "footer_link_color": "#ffffff",
+        "social_icon_color": "#ffffff",
+        "facebook_link": "https://www.facebook.com",
+        "instagram_link": "https://www.instagram.com",
+        "x_link": "https://www.twitter.com",
+        "facebook_icon": "shopify://shop_images/facebook-brand-icon.png",
+        "instagram_icon": "shopify://shop_images/instagram-brand-icon.png",
+        "x_icon": "shopify://shop_images/twitter-brand-icon.png"
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -32,7 +80,7 @@
           "type": "text",
           "settings": {
             "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
           }
         }
       },
@@ -41,10 +89,12 @@
         "footer-1",
         "footer-2"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
         "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
@@ -57,6 +107,7 @@
     }
   },
   "order": [
+    "custom_footer_XQHHPY",
     "footer"
   ]
 }

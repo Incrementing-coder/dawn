@@ -2,7 +2,14 @@
   .template-404 .title + * {
     margin-top: 1rem;
   }
-
+  .custom-style {
+    background-color: #febd5b;
+    color: black;
+    border: none;
+  }
+  .custom-style::after {
+    all: unset;
+  }
   @media screen and (min-width: 750px) {
     .template-404 .title + * {
       margin-top: 2rem;
@@ -11,14 +18,32 @@
 </style>
 
 <div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  asf
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
+  {% comment %}
+    <p>
+      {{ 'templates.404.subtext' | t }}
+    </p>
+  {% endcomment %}
+  <div>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0737/3789/6178/files/404.png?v=1737639102"
+      alt="404 Image"
+      height="270"
+      width="228"
+    >
+
+    <h2>🌾 Oops! Looks like you’ve wandered off the trail. 🌾</h2>
+    <p>
+      This page might be missing, but don’t worry—just like millets, our goodness is never far away! Let’s help you find
+      your way back to something nourishing.
+    </p>
+  </div>
+  {% comment %}
+    asf
+    <h1 class="title">
+      {{ 'templates.404.title' | t }}
+    </h1>
+  {% endcomment %}
+  <a href="{{ routes.all_products_collection_url }}" class="button custom-style">
     {{ 'general.continue_shopping' | t }}
   </a>
 </div>

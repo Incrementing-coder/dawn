@@ -339,7 +339,15 @@ if (!customElements.get('product-info')) {
         const currentVariantId = this.productForm?.variantIdInput?.value;
         if (!currentVariantId) return;
 
-        this.querySelector('.quantity__rules-cart .loading__spinner').classList.remove('hidden');
+        // this.querySelector('.quantity__rules-cart .loading__spinner').classList.remove('hidden');
+
+        const spinner = this.querySelector('.quantity__rules-cart .loading__spinner');
+        if (spinner) {
+          spinner.classList.remove('hidden');
+        } else {
+          console.warn('Spinner element not found in', this);
+        }
+
         fetch(`${this.dataset.url}?variant=${currentVariantId}&section_id=${this.dataset.section}`)
           .then((response) => response.text())
           .then((responseText) => {
@@ -347,7 +355,14 @@ if (!customElements.get('product-info')) {
             this.updateQuantityRules(this.dataset.section, html);
           })
           .catch((e) => console.error(e))
-          .finally(() => this.querySelector('.quantity__rules-cart .loading__spinner').classList.add('hidden'));
+          .finally(() => {
+            const spinner = this.querySelector('.quantity__rules-cart .loading__spinner');
+            if (spinner) {
+              spinner.classList.add('hidden');
+            } else {
+              console.warn('Spinner element not found inside:', this);
+            }
+          });
       }
 
       updateQuantityRules(sectionId, html) {
