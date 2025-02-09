@@ -1,24 +1,30 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll("details").forEach(function (details) {
+  document.querySelectorAll(".product__accordion details").forEach(function (details) {
     let summary = details.querySelector(".summary__title");
     let toggleIcon = summary.querySelector(".accordion-toggle");
 
-    details.addEventListener("toggle", function () {
+    summary.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default <summary> toggle behavior
+
+      let isOpen = details.hasAttribute("open");
+
       // Close all other accordions
-      document.querySelectorAll("details").forEach(function (item) {
+      document.querySelectorAll(".product__accordion details").forEach(function (item) {
         if (item !== details) {
           item.removeAttribute("open");
           let icon = item.querySelector(".accordion-toggle");
-          if (icon) icon.textContent = "+";
+          if (icon) icon.textContent = "+"; // Reset icon
         }
       });
 
-      // Update the toggle icon
-      if (details.hasAttribute("open")) {
-        toggleIcon.textContent = "−"; // Opened
+      // Toggle current accordion
+      if (isOpen) {
+        details.removeAttribute("open");
+        toggleIcon.textContent = "+";
       } else {
-        toggleIcon.textContent = "+"; // Closed
+        details.setAttribute("open", "");
+        toggleIcon.textContent = "−";
       }
     });
   });
