@@ -2,7 +2,7 @@
   <div class="marquee">
     <div class="marquee-content">
       <script>
-        console.log({{section.settings.marquee_texts|json}});
+        console.log({{ section.settings.marquee_texts | json }});
       </script>
       {%- for i in (1..3) -%}
         {%- assign texts = section.settings.marquee_texts | newline_to_br | split: '<br />' -%}
@@ -31,7 +31,7 @@
 
   .marquee-content {
     display: inline-block;
-    animation: marquee 25s linear infinite;
+    animation: marquee {{ section.settings.marquee_speed }}s linear infinite !important;
   }
 
   .marquee-item {
@@ -47,7 +47,6 @@
 
   @keyframes marquee {
     from { transform: translateX(100%); }
-
     to { transform: translateX(-100%); }
   }
 </style>
@@ -80,6 +79,15 @@
       "id": "separator_color",
       "label": "Separator Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Marquee Speed (seconds)",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "default": 25
     }
   ],
   "presets": [
