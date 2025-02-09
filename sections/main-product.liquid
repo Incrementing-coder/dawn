@@ -2,14 +2,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".summary__title").forEach(function (accordion) {
     accordion.addEventListener("click", function () {
-      let content = this.nextElementSibling;
+      let details = this.parentElement; // Get the <details> element
+      let content = details.querySelector(".accordion__content");
       let toggleIcon = this.querySelector(".accordion-toggle");
 
       // Close all accordions except the clicked one
-      document.querySelectorAll(".accordion__content").forEach(function (item) {
-        if (item !== content) {
-          item.style.display = "none";
-          let icon = item.previousElementSibling.querySelector(".accordion-toggle");
+      document.querySelectorAll("details").forEach(function (item) {
+        if (item !== details) {
+          item.removeAttribute("open"); // Close all other details elements
+          let icon = item.querySelector(".accordion-toggle");
           if (icon) {
             icon.textContent = "+";
             icon.style.fontSize = "30px"; // Apply font-size
@@ -18,18 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Toggle the clicked accordion
-      if (content.style.display === "none" || content.style.display === "") {
-        content.style.display = "block";
-        toggleIcon.textContent = "−"; // Show minus when expanded
-        toggleIcon.style.fontSize = "30px"; // Apply font-size
-      } else {
-        content.style.display = "none";
+      if (details.hasAttribute("open")) {
+        details.removeAttribute("open");
         toggleIcon.textContent = "+";
-        toggleIcon.style.fontSize = "30px"; // Apply font-size
+        toggleIcon.style.fontSize = "30px";
+      } else {
+        details.setAttribute("open", "true");
+        toggleIcon.textContent = "−"; // Show minus when expanded
+        toggleIcon.style.fontSize = "30px";
       }
     });
   });
 });
+
 </script>
 
 <product-info
@@ -244,23 +246,23 @@ document.addEventListener("DOMContentLoaded", function () {
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
-                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                  <details id="Details-{{ block.id }}-{{ section.id }}">
-                    <summary>
-<summary class="summary__title" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;padding:0rem 0rem">
-  {% render 'icon-accordion', icon: block.settings.icon %}
-  <h2 class="h4 accordion__title inline-richtext" style="font-weight:bold;font-size:20px;">
-    {{ block.settings.heading | default: block.settings.page.title | escape }}
-  </h2>
-  <span class="accordion-toggle" data-state="closed" style="font-size:30px;">+</span>
-</summary>
-<div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}" style="display: none;">
-  {{ block.settings.content }}
-  {{ block.settings.page.content }}
-</div>
+               <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                <details id="Details-{{ block.id }}-{{ section.id }}">
+                  <summary class="summary__title" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0rem;">
+                    {% render 'icon-accordion', icon: block.settings.icon %}
+                    <h2 class="h4 accordion__title inline-richtext" style="font-weight: bold; font-size: 20px;">
+                      {{ block.settings.heading | default: block.settings.page.title | escape }}
+                    </h2>
+                    <span class="accordion-toggle" data-state="closed" style="font-size: 30px;">+</span>
+                  </summary>
 
-                  </details>
-                </div>
+                  <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                    {{ block.settings.content }}
+                    {{ block.settings.page.content }}
+                  </div>
+                </details>
+              </div>
+
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
