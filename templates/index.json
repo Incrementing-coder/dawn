@@ -56,33 +56,46 @@
         "show_text_below": false
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "image_with_text_ibzN6d": {
+      "type": "image-with-text",
       "blocks": {
-        "heading": {
+        "heading_y3ABgk": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
+            "heading": "Why NEULI ?",
             "heading_size": "h1"
           }
         },
-        "text": {
+        "text_HaphAe": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+            "text": "<p>With NEULI, you're not just choosing a product - you're joining a movement to celebrate culture, support livelihoods and create a legacy for generations to come.</p>",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "heading_y3ABgk",
+        "text_HaphAe"
+      ],
+      "custom_css": [
+        ".image-with-text__media {border: none;}",
+        ".image-with-text__text {color: rgb(var(--color-foreground)); font-size: larger; line-height: 114%;}",
+        ".image-with-text__heading {color: #ffbd59; text-shadow: 2.77px 2.77px 0px rgba(107, 77, 61, 1);}"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
+        "image": "shopify://shop_images/Frame_128.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 20,
         "padding_bottom": 0
       }
     },
@@ -117,7 +130,7 @@
   },
   "order": [
     "image_banner",
-    "rich_text",
+    "image_with_text_ibzN6d",
     "featured_collection"
   ]
 }
