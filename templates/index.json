@@ -44,10 +44,13 @@
         "button"
       ],
       "custom_css": [
-        ".banner__heading {font-family: \"Bowlby One\"; line-height: 33px;}"
+        ".banner__heading {font-family: \"Bowlby One\"; line-height: 33px;}",
+        "@media screen and (max-width: 749px) {.banner__content {min-height: 60rem !important; } .banner__box {top: -100px; }}"
       ],
       "settings": {
         "image": "shopify://shop_images/banner.jpg",
+        "mobile_image": "shopify://shop_images/banner-mobile.png",
+        "image_height_mobile": "large",
         "image_overlay_opacity": 20,
         "image_height": "large",
         "desktop_content_position": "middle-left",
@@ -85,7 +88,8 @@
       "custom_css": [
         ".image-with-text__media {border: none;}",
         ".image-with-text__text {color: rgb(var(--color-foreground)); font-size: larger; line-height: 114%;}",
-        ".image-with-text__heading {color: #ffbd59; text-shadow: 2.77px 2.77px 0px rgba(107, 77, 61, 1);}"
+        ".image-with-text__heading {color: #ffbd59; text-shadow: 2.77px 2.77px 0px rgba(107, 77, 61, 1);}",
+        "@media (max-width: 769px) {.image-with-text__content {padding-top: 5px; padding-bottom: 0; }}"
       ],
       "settings": {
         "image": "shopify://shop_images/Frame_128.png",
@@ -105,12 +109,15 @@
     },
     "marquee_eUpX8Y": {
       "type": "marquee",
+      "custom_css": [
+        ".separator {margin: 0 140px; color: #febd5b;}"
+      ],
       "settings": {
         "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
         "background_color": "#411900",
         "text_color": "#fff8e7",
         "separator_color": "#febd5b",
-        "marquee_speed": 35
+        "marquee_speed": 51
       }
     },
     "product_feature_ibV3q7": {
@@ -121,17 +128,7 @@
         "product_image": "shopify://shop_images/Frame_22.png",
         "background_color": "#f4e4cc",
         "heading_color": "#333333",
-        "accent_color": "#E8A355"
-      }
-    },
-    "marquee_jp9GUJ": {
-      "type": "marquee",
-      "settings": {
-        "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
-        "background_color": "#411900",
-        "text_color": "#fff8e7",
-        "separator_color": "#febd5b",
-        "marquee_speed": 34
+        "accent_color": "#e8a355"
       }
     },
     "featured_collection": {
@@ -209,7 +206,6 @@
     "image_with_text_ibzN6d",
     "marquee_eUpX8Y",
     "product_feature_ibV3q7",
-    "marquee_jp9GUJ",
     "featured_collection",
     "testimonials_DzdjpA"
   ]

@@ -41,13 +41,14 @@
     "page_4BxU3r": {
       "type": "page",
       "custom_css": [
-        "img {border: none;}"
+        "img {border: none;}",
+        "div {padding: 40px 0 40px 0;}"
       ],
       "settings": {
         "page": "partner-with-us",
         "heading_size": "h1",
         "color_scheme": "",
-        "padding_top": 36,
+        "padding_top": 28,
         "padding_bottom": 36
       }
     }

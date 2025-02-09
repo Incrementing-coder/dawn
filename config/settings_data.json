@@ -11,7 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/logo.png",
     "logo_width": 130,
-    "favicon": "shopify://shop_images/logo.png",
+    "favicon": "shopify://shop_images/favicon.jpg",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -392,5 +392,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "@media screen and (min-width: 750px) {.page-width {padding: 0 1.5rem; }}"
+    ]
   }
 }

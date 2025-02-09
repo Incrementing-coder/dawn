@@ -88,6 +88,58 @@
         "padding_bottom": 36
       }
     },
+    "image_with_text_3FEKXk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_KHFj9U": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_3gRkqw": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "button_ptgXB9": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KHFj9U",
+        "text_3gRkqw",
+        "button_ptgXB9"
+      ],
+      "custom_css": [
+        ".image-with-text__text-item {display: none;}",
+        ".image-with-text__media {border: none;}",
+        "img {object-fit: contain;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/certificate.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 32
+      }
+    },
     "rich_text_MRGqEB": {
       "type": "rich-text",
       "blocks": {
@@ -116,6 +168,7 @@
     "custom_breadcrumb_nCREd8",
     "main",
     "multi_column_2_NLpiLX",
+    "image_with_text_3FEKXk",
     "rich_text_MRGqEB"
   ]
 }
