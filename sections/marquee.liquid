@@ -1,53 +1,67 @@
-<div class="marquee-container">
+<div class="marquee-container section-{{ section.id }}">
   <div class="marquee">
     <div class="marquee-content">
-      <script>
-        console.log({{ section.settings.marquee_texts | json }});
-      </script>
-      {%- for i in (1..3) -%}
-        {%- assign texts = section.settings.marquee_texts | newline_to_br | split: '<br />' -%}
-        {%- for text in texts -%}
-          <span class="marquee-item">
-            {{ text }}
-            <span class="separator">•</span>
-          </span>
-        {%- endfor -%}
+      {%- assign texts = section.settings.marquee_texts | newline_to_br | split: '<br />' -%}
+      {%- for text in texts -%}
+        <span class="marquee-item">
+          {{ text }}
+          <span class="separator">•</span>
+        </span>
+      {%- endfor -%}
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      {%- for text in texts -%}
+        <span class="marquee-item">
+          {{ text }}
+          <span class="separator">•</span>
+        </span>
       {%- endfor -%}
     </div>
   </div>
 </div>
 
 <style>
-  .marquee-container {
+  .marquee-container.section-{{ section.id }} {
     width: 100%;
     overflow: hidden;
     background: {{ section.settings.background_color }};
   }
 
-  .marquee {
+  .section-{{ section.id }} .marquee {
+    display: flex;
+    width: fit-content;
+  }
+
+  .section-{{ section.id }} .marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    animation: scroll-{{ section.id }} {{ section.settings.marquee_speed }}s linear infinite;
     white-space: nowrap;
-    position: relative;
+    {% if section.settings.reverse_animation %}
+    animation-direction: reverse;
+    {% endif %}
   }
 
-  .marquee-content {
-    display: inline-block;
-    animation: marquee {{ section.settings.marquee_speed }}s linear infinite !important;
-  }
-
-  .marquee-item {
-    display: inline-block;
+  .section-{{ section.id }} .marquee-item {
+    display: inline-flex;
+    align-items: center;
     padding: 10px 0;
     color: {{ section.settings.text_color }};
   }
 
-  .separator {
+  .section-{{ section.id }} .separator {
     margin: 0 40px;
     color: {{ section.settings.separator_color }};
   }
 
-  @keyframes marquee {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
+  @keyframes scroll-{{ section.id }} {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
   }
 </style>
 
@@ -88,6 +102,12 @@
       "max": 60,
       "step": 1,
       "default": 25
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_animation",
+      "label": "Reverse Animation Direction",
+      "default": false
     }
   ],
   "presets": [

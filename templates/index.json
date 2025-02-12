@@ -9,6 +9,71 @@
  */
 {
   "sections": {
+    "slideshow_zL7nHb": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_mzzjUc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner-image-1_c7723861-3ee4-4aae-9dc3-f9ed3a938259.jpg",
+            "mobile_image": "shopify://shop_images/Mobile_Hero.png",
+            "heading": "Naturally",
+            "heading2": "Nutritious",
+            "heading_size": "hxl",
+            "heading_size_2": "h0",
+            "subheading": "Procured directly from farmers to your table",
+            "button_label": "Explore Products",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 10,
+            "color_scheme": "scheme-3",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_yQAdXQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner-image-2.jpg",
+            "mobile_image": "shopify://shop_images/Mobile_Hero2.png",
+            "heading": "Naturally",
+            "heading2": "Nutritious",
+            "heading_size": "hxl",
+            "heading_size_2": "h0",
+            "subheading": "Procured directly from farmers to your table",
+            "button_label": "Explore Products",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 10,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_mzzjUc",
+        "slide_yQAdXQ"
+      ],
+      "custom_css": [
+        ".banner__heading {font-family: \"Bowlby One\"; line-height: 46px;}",
+        "@media screen and (max-width: 749px) {.banner__content {min-height: 60rem !important; } .banner__box {top: -100px; }}"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 7,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Neuli Products Slideshow"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -43,6 +108,7 @@
         "text",
         "button"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__heading {font-family: \"Bowlby One\"; line-height: 33px;}",
         "@media screen and (max-width: 749px) {.banner__content {min-height: 60rem !important; } .banner__box {top: -100px; }}"
@@ -88,11 +154,11 @@
       "custom_css": [
         ".image-with-text__media {border: none;}",
         ".image-with-text__text {color: rgb(var(--color-foreground)); font-size: larger; line-height: 114%;}",
-        ".image-with-text__heading {color: #ffbd59; text-shadow: 2.77px 2.77px 0px rgba(107, 77, 61, 1);}",
+        ".image-with-text__heading {color: #ffbd59; text-shadow: 2px 2px 0px rgba(107, 77, 61, 1);}",
         "@media (max-width: 769px) {.image-with-text__content {padding-top: 5px; padding-bottom: 0; }}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Frame_128.png",
+        "image": "shopify://shop_images/home-img-2.png",
         "height": "adapt",
         "desktop_image_width": "small",
         "layout": "image_first",
@@ -113,28 +179,43 @@
         ".separator {margin: 0 140px; color: #febd5b;}"
       ],
       "settings": {
-        "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
+        "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein\nVegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
         "background_color": "#411900",
         "text_color": "#fff8e7",
         "separator_color": "#febd5b",
-        "marquee_speed": 51
+        "marquee_speed": 41,
+        "reverse_animation": false
       }
     },
     "product_feature_ibV3q7": {
       "type": "product-feature",
       "settings": {
         "heading": "Why is millet our",
-        "subheading": "SUPER PRODUCT",
+        "subheading": "SUPER PRODUCT ?",
         "product_image": "shopify://shop_images/Frame_22.png",
         "background_color": "#f4e4cc",
         "heading_color": "#333333",
         "accent_color": "#e8a355"
       }
     },
+    "marquee_MX6MTR": {
+      "type": "marquee",
+      "custom_css": [
+        ".separator {margin: 0 140px; color: #febd5b;}"
+      ],
+      "settings": {
+        "marquee_texts": "Vegan Friendly\nChemical Free\nNON-GMO\nPlant protein\nVegan Friendly\nChemical Free\nNON-GMO\nPlant protein",
+        "background_color": "#411900",
+        "text_color": "#fff8e7",
+        "separator_color": "#febd5b",
+        "marquee_speed": 41,
+        "reverse_animation": true
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "custom_css": [
-        ".title {color: #ffbd59; text-shadow: 2.77px 2.77px 0px rgba(107, 77, 61, 1); font-size: 3rem; text-align: center; margin-bottom: 100px;}",
+        ".title {color: #ffbd59; text-shadow: 2px 2px 0px rgba(107, 77, 61, 1); font-size: 3.5rem; text-align: center; margin-bottom: 100px;}",
         ".grid {justify-content: space-between;}",
         ".card__heading {font-size: 20px;}",
         ".price-item {font-size: 24px;}",
@@ -202,10 +283,12 @@
     }
   },
   "order": [
+    "slideshow_zL7nHb",
     "image_banner",
     "image_with_text_ibzN6d",
     "marquee_eUpX8Y",
     "product_feature_ibV3q7",
+    "marquee_MX6MTR",
     "featured_collection",
     "testimonials_DzdjpA"
   ]

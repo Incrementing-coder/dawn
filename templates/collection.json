@@ -46,6 +46,8 @@
         ".price-item {font-size: 24px;}"
       ],
       "settings": {
+        "new_product_display": true,
+        "custom_new_product_image": "shopify://shop_images/emptyproduct.png",
         "products_per_page": 16,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",

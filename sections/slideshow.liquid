@@ -22,6 +22,10 @@
         display: block;
       }
     }
+
+    .media  {
+        background-color: red;
+    }
   {%- endstyle -%}
 {%- endif -%}
 
@@ -136,18 +140,59 @@
                 assign fetch_priority = 'high'
               endif
             -%}
-            {%- if forloop.first %}
-              {{
-                block.settings.image
-                | image_url: width: 3840
-                | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-              }}
+            {%- if block.settings.mobile_image != blank -%}
+              <picture>
+                <source media="(max-width: 749px)" srcset="{{ block.settings.mobile_image | image_url: width: 750 }}">
+                {%- if forloop.first %}
+                  <source media="(min-width: 750px)" srcset="{{ block.settings.image | image_url: width: 3840 }}">
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag:
+                      height: height,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      class: 'w-100 h-100 object-fit-cover'
+                  }}
+                {%- else -%}
+                  <source media="(min-width: 750px)" srcset="{{ block.settings.image | image_url: width: 3840 }}">
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag:
+                      loading: 'lazy',
+                      height: height,
+                      sizes: sizes,
+                      widths: widths,
+                      class: 'w-100 h-100 object-fit-cover'
+                  }}
+                {%- endif -%}
+              </picture>
             {%- else -%}
-              {{
-                block.settings.image
-                | image_url: width: 3840
-                | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
-              }}
+              {%- if forloop.first %}
+                {{
+                  block.settings.image
+                  | image_url: width: 3840
+                  | image_tag:
+                    height: height,
+                    sizes: sizes,
+                    widths: widths,
+                    fetchpriority: fetch_priority,
+                    class: 'w-100 h-100 object-fit-cover'
+                }}
+              {%- else -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    height: height,
+                    sizes: sizes,
+                    widths: widths,
+                    class: 'w-100 h-100 object-fit-cover'
+                }}
+              {%- endif -%}
             {%- endif -%}
           {%- else -%}
             {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
@@ -163,6 +208,9 @@
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading inline-richtext {{ block.settings.heading_size }}">
                 {{ block.settings.heading }}
+              </h2>
+              <h2 class="banner__heading inline-richtext {{ block.settings.heading_size_2 }}">
+                {{ block.settings.heading2 }}
               </h2>
             {%- endif -%}
             {%- if block.settings.subheading != blank -%}
@@ -400,10 +448,22 @@
           "label": "t:sections.slideshow.blocks.slide.settings.image.label"
         },
         {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image",
+          "info": "Optional. Will be used on mobile devices if set."
+        },
+        {
           "type": "inline_richtext",
           "id": "heading",
           "default": "t:sections.slideshow.blocks.slide.settings.heading.default",
           "label": "t:sections.slideshow.blocks.slide.settings.heading.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading2",
+          "default": "t:sections.slideshow.blocks.slide.settings.heading.default",
+          "label": "Heading 2"
         },
         {
           "type": "select",
@@ -432,6 +492,34 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size_2",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "Heading 2 Size"
         },
         {
           "type": "inline_richtext",
