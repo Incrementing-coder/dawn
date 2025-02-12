@@ -15,6 +15,20 @@
           {{ text }}
           <span class="separator">•</span>
         </span>
+      {%- assign texts = section.settings.marquee_texts | newline_to_br | split: '<br />' -%}
+      {%- for text in texts -%}
+        <span class="marquee-item">
+          {{ text }}
+          <span class="separator">•</span>
+        </span>
+      {%- endfor -%}
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      {%- for text in texts -%}
+        <span class="marquee-item">
+          {{ text }}
+          <span class="separator">•</span>
+        </span>
       {%- endfor -%}
     </div>
   </div>
