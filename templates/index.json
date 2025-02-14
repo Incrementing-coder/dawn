@@ -12,10 +12,10 @@
     "slideshow_zL7nHb": {
       "type": "slideshow",
       "blocks": {
-        "slide_mzzjUc": {
+        "slide_yQAdXQ": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/banner-image-1_c7723861-3ee4-4aae-9dc3-f9ed3a938259.jpg",
+            "image": "shopify://shop_images/banner-image-1.jpg",
             "mobile_image": "shopify://shop_images/Mobile_Hero.png",
             "heading": "Naturally",
             "heading2": "Nutritious",
@@ -29,11 +29,11 @@
             "show_text_box": false,
             "text_alignment": "left",
             "image_overlay_opacity": 10,
-            "color_scheme": "scheme-3",
+            "color_scheme": "",
             "text_alignment_mobile": "center"
           }
         },
-        "slide_yQAdXQ": {
+        "slide_mzzjUc": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/banner-image-2.jpg",
@@ -50,14 +50,14 @@
             "show_text_box": false,
             "text_alignment": "left",
             "image_overlay_opacity": 10,
-            "color_scheme": "",
+            "color_scheme": "scheme-3",
             "text_alignment_mobile": "center"
           }
         }
       },
       "block_order": [
-        "slide_mzzjUc",
-        "slide_yQAdXQ"
+        "slide_yQAdXQ",
+        "slide_mzzjUc"
       ],
       "custom_css": [
         ".banner__heading {font-family: \"Bowlby One\"; line-height: 46px;}",
@@ -114,8 +114,6 @@
         "@media screen and (max-width: 749px) {.banner__content {min-height: 60rem !important; } .banner__box {top: -100px; }}"
       ],
       "settings": {
-        "image": "shopify://shop_images/banner.jpg",
-        "mobile_image": "shopify://shop_images/banner-mobile.png",
         "image_height_mobile": "large",
         "image_overlay_opacity": 20,
         "image_height": "large",
@@ -142,7 +140,7 @@
         "text_HaphAe": {
           "type": "text",
           "settings": {
-            "text": "<p>With NEULI, you're not just choosing a product - you're joining a movement to celebrate culture, support livelihoods and create a legacy for generations to come.</p>",
+            "text": "<p>With NEULI, you're not just choosing a product - you're joining a movement to celebrate culture, support livelihoods and create a legacy for generations to come. </p>",
             "text_style": "body"
           }
         }
@@ -215,12 +213,13 @@
     "featured_collection": {
       "type": "featured-collection",
       "custom_css": [
-        ".title {color: #ffbd59; text-shadow: 2px 2px 0px rgba(107, 77, 61, 1); font-size: 3.5rem; text-align: center; margin-bottom: 10px;}",
+        ".title {color: #ffbd59; text-shadow: 2px 2px #6b4d3d; font-size: 3rem; text-align: center; margin-bottom: 100px;}",
         ".grid {justify-content: space-between;}",
         ".card__heading {font-size: 20px;}",
         ".price-item {font-size: 24px;}",
         ".quick-add__submit {background-color: #febd5b; outline: none;}",
-        ".quick-add__submit::after {box-shadow: none;}"
+        ".quick-add__submit::after {box-shadow: none;}",
+        "@media (max-width: 769px) {.grid {gap: 30px; }}"
       ],
       "settings": {
         "title": "Featured products",

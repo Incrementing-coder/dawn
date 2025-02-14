@@ -91,7 +91,7 @@
           "settings": {
             "heading": "Ingredients",
             "icon": "none",
-            "content": "{{ product.metafields.custom.Ingredients | metafield_tag }}",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
             "page": ""
           }
         }
